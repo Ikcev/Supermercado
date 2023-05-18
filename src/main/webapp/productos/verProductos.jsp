@@ -9,7 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <title>Ver Productos</title>
 </head>
-<body>
+<body style="text-align:center">
 	<table style="border:1px solid black">
 		<tr>
 			<th>Id</th>
@@ -18,6 +18,7 @@
 			<th>Cantidad</th>
 			<th>Precio</th>
 			<th>Caducidad</th>
+			<th>Seccion</th>
 		</tr>
 		<c:forEach items="${ productos }" var="producto">
 			 <tr>
@@ -27,6 +28,8 @@
 	 			<th style="border:1px solid black">${ producto.cantidad }</th>
 	 			<th style="border:1px solid black">${ producto.precio }</th>
 	 			<th style="border:1px solid black">${ producto.caducidad }</th>
+	 			<th style="border:1px solid black">${ producto.seccion.id }</th>
+	 			<th><button type="button" class="btn btn-primary" href="insertarProducto">Insertar</button></th>
 	 		</tr>
 	 	</c:forEach>
 	 </table>

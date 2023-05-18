@@ -11,7 +11,7 @@ import ModeloDTO.Producto;
 
 public class ModeloProducto extends Conexion {
 	public boolean insertarProducto(Producto producto) {
-		String st = "INSERT INTO productos (codigo, nombre, cantidad, precio, caducidad) values (?,?,?,?,?)";
+		String st = "INSERT INTO productos (codigo, nombre, cantidad, precio, caducidad, id_seccion) values (?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement pst = super.connection.prepareStatement(st);
@@ -21,6 +21,7 @@ public class ModeloProducto extends Conexion {
 			pst.setInt(3, producto.getCantidad());
 			pst.setDouble(4, producto.getPrecio());
 			pst.setDate(5, new Date(producto.getCaducidad().getTime()));
+			pst.setInt(6, producto.getSeccion().getId());
 			
 			pst.execute();
 			return true;
@@ -33,15 +34,19 @@ public class ModeloProducto extends Conexion {
 	
 	private Producto rellenarProducto(ResultSet rs) throws SQLException {
 		Producto producto = new Producto();
-		
 		producto.setId(rs.getInt("id"));
 		producto.setCodigo(rs.getString("codigo"));
 		producto.setNombre(rs.getString("nombre"));
 		producto.setCantidad(rs.getInt("cantidad"));
 		producto.setPrecio(rs.getDouble("precio"));
 		producto.setCaducidad(rs.getDate("caducidad"));
-		producto.setId_seccion(rs.getInt("id_seccion"));
 		
+		ModeloSeccion modeloSeccion = new ModeloSeccion();
+		modeloSeccion.conectar();
+
+		producto.setSeccion(modeloSeccion.getSeccion(rs.getInt("id_seccion")));
+		
+		modeloSeccion.cerrar();
 		return producto;
 	}
 	
