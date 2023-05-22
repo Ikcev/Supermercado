@@ -10,6 +10,7 @@
 <title>Ver Productos</title>
 </head>
 <body style="text-align:center">
+<a class="btn btn-primary" href="insertarProducto">Insertar</a>
 	<table style="border:1px solid black">
 		<tr>
 			<th>Id</th>
@@ -29,7 +30,6 @@
 	 			<th style="border:1px solid black">${ producto.precio }</th>
 	 			<th style="border:1px solid black">${ producto.caducidad }</th>
 	 			<th style="border:1px solid black">${ producto.seccion.id }</th>
-	 			<th><button type="button" class="btn btn-primary" href="insertarProducto">Insertar</button></th>
 	 		</tr>
 	 	</c:forEach>
 	 </table>

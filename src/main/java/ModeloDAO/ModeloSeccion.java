@@ -9,6 +9,22 @@ import ModeloDTO.Conexion;
 import ModeloDTO.Seccion;
 
 public class ModeloSeccion extends Conexion {
+	public boolean insertarSeccion(Seccion seccion) {
+		String st = "INSERT INTO secciones (nombre) values (?)";
+		
+		try {
+			PreparedStatement pst = super.connection.prepareStatement(st);
+			
+			pst.setString(1, seccion.getNombre());
+			
+			pst.execute();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 	
 	public Seccion getSeccion(int id) {
 		String st = "SELECT * FROM secciones WHERE id=?";
