@@ -6,11 +6,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insertar Productos</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
+<body class="container" >
 	<h1 style="text-align: center">Insertar Producto</h1>
 
-	<form class="container" method="POST" action="insertarProducto">
+	<form method="POST" action="insertarProducto">
 
 		<label for="codigo" class="form-label">Codigo de Producto</label>
 		<input type="text" id="codigo" class="form-control" name="codigo"><br>
@@ -28,6 +29,7 @@
 				<option value="${seccion.id}">${seccion.id}</option>
 			</c:forEach>
 		</select><br>
+		<a class="btn btn-primary" href="mostrarProductos">Cancelar</a>
 		<button type="submit" class="btn btn-primary">Insertar</button>
 	</form>
 
