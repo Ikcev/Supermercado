@@ -67,8 +67,8 @@ public class insertarProducto extends HttpServlet {
 		// TODO Auto-generated method stub
 		String codigo = request.getParameter("codigo");
 		String nombre = request.getParameter("nombre");
-		String cantidad = request.getParameter("cantidad");
-		String precio = request.getParameter("precio");
+		String pcantidad = request.getParameter("cantidad");
+		String pprecio = request.getParameter("precio");
 		String caducidad = request.getParameter("caducidad");
 		String pseccion = request.getParameter("id_seccion");
 
@@ -81,31 +81,49 @@ public class insertarProducto extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		ModeloSeccion modeloSeccion = new ModeloSeccion();
-		modeloSeccion.conectar();
-
-		Producto producto = new Producto();
-
-		producto.setCodigo(codigo);
-		producto.setNombre(nombre);
-		producto.setCantidad(Integer.parseInt(cantidad));
-		producto.setPrecio(Double.parseDouble(precio));
-		producto.setCaducidad(fechaCaducidad);
-
-		Seccion seccion = modeloSeccion.getSeccion(Integer.parseInt(pseccion));
-
-		producto.setSeccion(seccion);
-
+		
+		int cantidad = Integer.parseInt(pcantidad);
+		double precio = Double.parseDouble(pprecio);
+		
 		ModeloProducto modeloProducto = new ModeloProducto();
 		modeloProducto.conectar();
+		
+		ModeloSeccion modeloSeccion = new ModeloSeccion();
+		modeloSeccion.conectar();
+		
+		Seccion seccion = modeloSeccion.getSeccion(Integer.parseInt(pseccion));
 
-		modeloProducto.insertarProducto(producto);
 
-		modeloProducto.cerrar();
-		modeloSeccion.cerrar();
+		if (modeloProducto.existeCodigoDuplicado(codigo)) {
+			System.out.println("Error");
+		} else if (precio <= 0 || cantidad <= 0) {
+			System.out.println("Error");
+		} else if (fechaCaducidad.before(new Date())) {
+			System.out.println("Error");
+		} else if (seccion == null) {
+			System.out.println("Error");
+		} else {
 
-		request.getRequestDispatcher("mostrarProductos").forward(request, response);
+
+			Producto producto = new Producto();
+
+			producto.setCodigo(codigo);
+			producto.setNombre(nombre);
+			producto.setCantidad(cantidad);
+			producto.setPrecio(precio);
+			producto.setCaducidad(fechaCaducidad);
+
+
+			producto.setSeccion(seccion);
+
+			modeloProducto.insertarProducto(producto);
+
+			modeloProducto.cerrar();
+			modeloSeccion.cerrar();
+			
+			request.getRequestDispatcher("mostrarProductos").forward(request, response);
+		}
 	}
 
 }
+

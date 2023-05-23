@@ -70,4 +70,28 @@ public class ModeloProducto extends Conexion {
 		
 		return null;
 	}
+	
+	public boolean existeCodigoDuplicado(String codigo) {
+        boolean codigoDuplicado = false;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            String query = "SELECT COUNT(*) AS count FROM productos WHERE codigo = ?";
+            statement = connection.prepareStatement(query);
+            statement.setString(1, codigo);
+
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                int count = resultSet.getInt("count");
+                codigoDuplicado = count > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+
+        return codigoDuplicado;
+    }
+
 }
