@@ -70,8 +70,4 @@ public class ModeloProducto extends Conexion {
 		
 		return null;
 	}
-	
-	
-	
-	
 }
