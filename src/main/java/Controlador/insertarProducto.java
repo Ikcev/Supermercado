@@ -72,8 +72,6 @@ public class insertarProducto extends HttpServlet {
 		String caducidad = request.getParameter("caducidad");
 		String pseccion = request.getParameter("id_seccion");
 
-		System.out.println(caducidad);
-
 		Date fechaCaducidad = null;
 		try {
 			fechaCaducidad = new SimpleDateFormat("yyyy-MM-dd").parse(caducidad);

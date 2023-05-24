@@ -30,7 +30,7 @@
 	 			<th style="border:1px solid black">${ producto.precio }</th>
 	 			<th style="border:1px solid black">${ producto.caducidad }</th>
 	 			<th style="border:1px solid black">${ producto.seccion.id }</th>
-	 			<th><a class="btn btn-primary" href="modificarProducto">Modificar</a></th>
+	 			<th><a class="btn btn-primary" href="modificarProducto?id=${producto.id}">Modificar</a></th>
 	 		</tr>
 	 	</c:forEach>
 	 </table>

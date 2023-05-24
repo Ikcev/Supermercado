@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -15,15 +15,15 @@
 <form method="POST" action="modificarProducto">
 
 		<label for="codigo" class="form-label">Codigo de Producto</label>
-		<input type="text" id="codigo" class="form-control" name="codigo"><br>
+		<input type="text" id="codigo" class="form-control" name="codigo" value="${producto.codigo}"><br>
 		<label for="nombre" class="form-label">Nombre de Producto</label>
-		<input type="text" id="nombre" class="form-control" name="nombre"><br>
+		<input type="text" id="nombre" class="form-control" name="nombre" value="${producto.nombre}"><br>
 		<label for="cantidad" class="form-label">Cantidad</label>
-		<input type="text" id="cantidad" class="form-control" name="cantidad"><br>
+		<input type="text" id="cantidad" class="form-control" name="cantidad" value="${producto.cantidad}"><br>
 		<label for="precio" class="form-label">Precio</label>
-		<input type="text" id="precio" class="form-control" name="precio"><br>
+		<input type="text" id="precio" class="form-control" name="precio" value="${producto.precio}"><br>
 		<label for="caducidad" class="form-label">Fecha de Caducidad</label>
-		<input type="date" id="caducidad" class="form-control" name="caducidad"><br>
+		<input type="date" id="caducidad" class="form-control" name="caducidad" value="${producto.caducidad}"><br>
 		<label for="seccion" class="form-label">Seccion</label>
 		<select id="id_seccion" name="id_seccion" class="form-select">
 			<c:forEach items="${ secciones }" var="seccion">
