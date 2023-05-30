@@ -16,13 +16,27 @@
 <br>
 <form method="GET" action="mostrarProductos">
 <div class="input-group rounded">
-  <input type="search" name="buscador" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+  <input type="search" name="buscador" class="form-control rounded" placeholder="Introduce cadena a buscar" aria-label="Search" aria-describedby="search-addon">
   <span class="input-group-text border-0" id="search-addon">
     <i class="fas fa-search"></i>
   </span>
 </div>
-<br>
 </form>
+<br>
+<form class="row">
+<div class="input-group col">
+  <span class="input-group-text">&euro;</span>
+  <span class="input-group-text">0.00</span>
+  <input type="number" min="0" class="form-control" placeholder="Precio Mínimo" aria-label="Dollar amount (with dot and two decimal places)">
+</div>
+
+<div class="input-group col">
+  <input type="number" min="0" class="form-control" placeholder="Precio Máximo" aria-label="Dollar amount (with dot and two decimal places)">
+  <span class="input-group-text">&euro;</span>
+  <span class="input-group-text">0.00</span>
+</div>
+</form>
+<br>
 	<table class="table table-dark table-striped table-hover" style="border:1px solid whitesmoke">
 		<tr>
 			<th scope="col">Id</th>
