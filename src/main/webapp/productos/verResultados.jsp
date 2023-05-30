@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="ModeloDTO.Producto" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,36 +9,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<title>Ver Productos</title>
+<title>Ver Resultados</title>
 </head>
 <body class="container" style="text-align:center">
-<div class="botonInsert">
-<a class="btn btn-primary" href="insertarProducto">Insertar</a>
-</div>
-<br>
-<form method="GET" action="mostrarProductos">
-<div class="input-group rounded">
-  <input type="search" name="buscador" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
-  <span class="input-group-text border-0" id="search-addon">
-    <i class="fas fa-search"></i>
-  </span>
-</div>
-<br>
-</form>
-	<table class="table table-dark table-striped table-hover" style="border:1px solid whitesmoke">
-		<tr>
-			<th scope="col">Id</th>
-			<th scope="col">Codigo</th>
-			<th scope="col">Nombre</th>
-			<th scope="col">Cantidad</th>
-			<th scope="col">Precio</th>
-			<th scope="col">Caducidad</th>
-			<th scope="col">Seccion</th>
+    <h1>Resultados de búsqueda</h1>
+    
+    <table  class="table table-dark table-striped table-hover" style="border:1px solid whitesmoke">
+        <tr>
+			<th>Id</th>
+			<th>Codigo</th>
+			<th>Nombre</th>
+			<th>Cantidad</th>
+			<th>Precio</th>
+			<th>Caducidad</th>
+			<th>Seccion</th>
 			<th></th>
 		</tr>
-		<c:forEach items="${ productos }" var="producto">
+		<c:forEach items="${ resultados }" var="producto">
 			 <tr>
-			 	<th style="border:1px solid whitesmoke" scope="row">${ producto.id }</th>
+			 	<th style="border:1px solid whitesmoke">${ producto.id }</th>
 				<th style="border:1px solid whitesmoke">${ producto.codigo }</th>
 				<th style="border:1px solid whitesmoke">${ producto.nombre }</th>
 	 			<th style="border:1px solid whitesmoke">${ producto.cantidad }</th>
@@ -46,7 +37,8 @@
 	 			<th><a class="btn btn-light" href="modificarProducto?id=${producto.id}">Modificar</a></th>
 	 		</tr>
 	 	</c:forEach>
-	 </table>
-	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </table>
+    
+    <a class="btn btn-success" href="mostrarProductos">Volver a Inicio</a>
 </body>
 </html>

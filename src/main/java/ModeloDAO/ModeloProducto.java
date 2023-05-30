@@ -126,7 +126,7 @@ public class ModeloProducto extends Conexion {
 			pst.setString(2, producto.getNombre());
 			pst.setInt(3, producto.getCantidad());
 			pst.setDouble(4, producto.getPrecio());
-			pst.setDate(5, new Date(producto.getCaducidad().getTime()));
+			pst.setDate(5, new java.sql.Date(producto.getCaducidad().getTime()));
 			pst.setInt(6, producto.getSeccion().getId());
 			pst.setInt(7, producto.getId());
 

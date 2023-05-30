@@ -92,19 +92,17 @@ public class modificarProducto extends HttpServlet {
 		Seccion seccion = modeloSeccion.getSeccion(Integer.parseInt(pseccion));
 
 
-		if (modeloProducto.existeCodigoDuplicado(codigo)) {
-			System.out.println("Error");
-		} else if (precio <= 0 || cantidad <= 0) {
-			System.out.println("Error");
+		if (precio <= 0 || cantidad <= 0) {
+			System.out.println("Error precio o cantidad");
 		} else if (fechaCaducidad.before(new Date())) {
-			System.out.println("Error");
+			System.out.println("Error fecha");
 		} else if (seccion == null) {
-			System.out.println("Error");
+			System.out.println("Error seccion");
 		} else {
 
 
 			Producto producto = new Producto();
-
+			
 			producto.setCodigo(codigo);
 			producto.setNombre(nombre);
 			producto.setCantidad(cantidad);
